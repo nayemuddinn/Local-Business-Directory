@@ -12,6 +12,10 @@
 
 <body>
 
+  <?php
+  include 'db_connection.php';
+  ?>
+
   <header>
     <h2 class="logo">Logo</h2>
   </header>
@@ -42,11 +46,11 @@
       </form>
 
       <div class="register-link">
-      <a href="registration.php" class="register-link"> Don't have an account?</a>
-    </div>
+        <a href="registration.php" class="register-link"> Don't have an account?</a>
+      </div>
     </div>
 
-   
+
 
   </div>
 </body>
