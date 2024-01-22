@@ -14,14 +14,6 @@
 
   <header>
     <h2 class="logo">Logo</h2>
-    <nav class="navigation">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="Inventory.html">Inventory</a>
-      <a href="Bill.html">Bill</a>
-      <a href="Customer.html">Customers</a>
-      <a href="Profile.html">Profile</a>
-      <button class="btnLogin-popup">Login</button>
-    </nav>
   </header>
 
   <div class="registration-wrapper">
