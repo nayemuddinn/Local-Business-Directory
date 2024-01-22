@@ -33,17 +33,19 @@
 
         $verify_query = mysqli_query($conn, "SELECT Email FROM users WHERE Email='$email'");
         if (mysqli_num_rows($verify_query) != 0) {
-          echo "<div class='message'>
+          echo "<div class='register-link'>
             <p>This email is used, Try another One Please!</p>
         </div> <br>";
-          echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+        echo "<a href='registration.php'><button class='btn'>Go Back</button>";
         } else {
 
           mysqli_query($conn, "INSERT INTO users(Name,Email,Password,Phone,Address) VALUES('$name','$email','$password','$phone','$address')") or die("Erroe Occured");
 
-          echo "<div class='message'>
+          echo "<div class='register-link'>
               <p>Registration successfully!</p>
           </div> <br>";
+
+          echo "<a href='login.php'><button class='btn'>Login Now</button>";
         
 
 
