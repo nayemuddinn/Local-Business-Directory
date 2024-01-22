@@ -94,7 +94,7 @@ header {
 
 }
 
-.wrapper {
+.login-wrapper {
     color: #fff;
     position: relative;
     width: 400px;
@@ -110,7 +110,28 @@ header {
 
 }
 
-.wrapper .form-box {
+.registration-wrapper {
+    color: #fff;
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-wrapper .form-box {
+    width: 100%;
+    padding: 30px;
+}
+
+.registration-wrapper .form-box {
     width: 100%;
     padding: 30px;
 }
@@ -142,7 +163,7 @@ header {
 
 .input-box input:focus~label,
 .input-box input:valid~label {
-    top: -5px;
+    top: -4px;
 }
 
 .input-box input {
@@ -194,6 +215,13 @@ header {
 .register-link {
     font-weight: 1;
     color: #ffffff;
+    font-family: arial;
+    font-size: 10px;
+    margin: 25px;
+   padding-left: 30px;
+
+
+
 }
 
 
