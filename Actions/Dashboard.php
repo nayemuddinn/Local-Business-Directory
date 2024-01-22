@@ -21,8 +21,8 @@
       <a href="Bill.html">Bill</a>
       <a href="Customer.html">Customers</a>
       <a href="Profile.html">Profile</a>
-      <button class="btnLogin-popup">Log out</button>
     </nav>
+    <a href="login.php"> <button class="btnLogin-popup">Log out</button>
   </header>
 
   <div class="home-wrapper">

@@ -14,7 +14,7 @@
     position: relative;
     font-size: 1.7em;
     color: #ffffff;
-    margin-left: 40px;
+    margin-left: 30px;
     font-weight: 500;
     min-height: 50px;
 }
@@ -38,22 +38,22 @@
 }
 
 
-.navigation .btnLogin-popup {
-    width: 130px;
-    height: 50px;
+.btnLogin-popup {
+    width: 100px;
+    height: 30px;
     background: transparent;
     border: 2px solid white;
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1.5em;
-    color: whitesmoke;
-    font-weight: 500;
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
     margin-left: 40px;
 }
 
 
-.navigation .btnLogin-popup:hover {
+.btnLogin-popup:hover {
 
     background: #fff;
     color: black;
