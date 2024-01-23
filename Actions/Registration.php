@@ -64,7 +64,7 @@
 
           <div class="input-box">
             <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-            <input type="text" name="email" id="email" autocomplete="off" required>
+            <input type="email" name="email" id="email" autocomplete="off" required>
             <label>Email</label>
           </div>
 
