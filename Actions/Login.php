@@ -33,14 +33,15 @@ session_start();
     } else {
       echo "<div class='message'>
       <p>Wrong Username or Password</p>
-       </div> <br>";
-      echo "<a href='login.php'><button class='btn'>Go Back</button>";
+      <br> <br> <br>
+       <div>";
+      echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+      </div>";
 
     }
     if (isset($_SESSION['valid'])) {
       header("Location: dashboard.php");
     }
-
 
   } else {
 

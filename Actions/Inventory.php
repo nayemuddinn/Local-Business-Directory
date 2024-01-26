@@ -37,7 +37,7 @@
       <a href="Customer.html">Customers</a>
       <a href="Profile.html">Profile</a>
     </nav>
-    <a href="login.php"> <button class="btnLogin-popup">Log out</button>
+    <a href="login.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
 
   <main style="background-color: aliceblue; width:700px ;border-radius:10px">

@@ -79,21 +79,6 @@ header {
 
 }
 
-.home-wrapper {
-    color: #fff;
-    position: relative;
-    width: 400px;
-    height: 100px;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-
 
 .login-wrapper .form-box {
     width: 100%;
@@ -189,8 +174,6 @@ header {
     margin: 25px;
     padding-left: 30px;
 
-
-
 }
 
 
@@ -216,6 +199,35 @@ header {
 
 
 .btn:hover {
+    background: #fff;
+    color: black;
+}
+
+.message{
+    color:#ffffff;
+    font-size: 1.6em;
+    font-weight: 200px;
+    margin-left: 400px;
+    padding-right: 150px;
+}
+
+.GoBack-btn
+{
+    width: 100px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: whitesmoke;
+    font-weight: 500;
+    margin-right: 400px;
+}
+
+
+.GoBack-btn:hover {
     background: #fff;
     color: black;
 }
