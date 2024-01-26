@@ -16,11 +16,22 @@
   <header>
     <h2 class="logo">Logo</h2>
     <nav class="navigation">
+
       <a href="dashboard.php">Dashboard</a>
-      <a href="Inventory.php">Inventory</a>
+
+      <div class="dropdown-container">
+        <a href="Inventory.php">Inventory </a>
+        <div class="dropdown-content">
+          <a href="Customer.html">Search Product</a>
+          <a href="addProduct.php">Add Product</a>
+          <a href="Customer.html">Update Product</a>
+        </div>
+      </div>
+
       <a href="Bill.html">Bill</a>
       <a href="Customer.html">Customers</a>
       <a href="Profile.html">Profile</a>
+
     </nav>
     <a href="login.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
@@ -45,17 +56,19 @@
 
 
         <div class="input-box">
-          <input type="text" style="margin-left: 30px;" name="productname"  autocomplete="off" required>
+          <input type="text" style="margin-left: 30px;" name="productname" autocomplete="off" required>
           <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="name">Product Name</label>
         </div>
 
         <div class="input-box">
-          <input type="text" style="margin-left: 15px;" id="productprice" name="productprice" maxlength="10"  autocomplete="off" required>
+          <input type="text" style="margin-left: 15px;" id="productprice" name="productprice" maxlength="10"
+            autocomplete="off" required>
           <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="productID">Product Price</label>
         </div>
 
         <div class="input-box">
-          <input type="number" style="margin-left: 10px;" name="quantity" id="quantity" min="1" max=""  autocomplete="off" required>
+          <input type="number" style="margin-left: 10px;" name="quantity" id="quantity" min="1" max=""
+            autocomplete="off" required>
           <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="name">Available Product</label>
         </div>
 

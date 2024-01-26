@@ -53,3 +53,33 @@
 }
 
 
+.dropdown-container {
+    display: inline;
+    position: relative;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 20px;
+    gap: 100px;
+    right: 0px;
+    left: 20px;
+    backdrop-filter: blur(20px);
+    font-size: 0.8em;
+    background-color: transparent;
+    text-align: left;
+    min-width: 140px;
+    height: fit-content;
+    display: none;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    min-height: 25px;
+    padding-top: 10px;
+  }
+  
+  .dropdown-container:hover .dropdown-content {
+    display: block;
+  }
+

@@ -16,11 +16,22 @@
   <header>
     <h2 class="logo">Logo</h2>
     <nav class="navigation">
+
       <a href="dashboard.php">Dashboard</a>
-      <a href="Inventory.php">Inventory</a>
+
+      <div class="dropdown-container">
+        <a href="Inventory.php">Inventory </a>
+        <div class="dropdown-content">
+          <a href="Customer.html">Search Product</a>
+          <a href="addProduct.php">Add Product</a>
+          <a href="Customer.html">Update Product</a>
+        </div>
+      </div>
+
       <a href="Bill.html">Bill</a>
       <a href="Customer.html">Customers</a>
       <a href="Profile.html">Profile</a>
+
     </nav>
     <a href="login.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
