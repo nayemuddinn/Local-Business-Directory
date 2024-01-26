@@ -22,7 +22,7 @@
       <div class="dropdown-container">
         <a href="">Inventory </a>
         <div class="dropdown-content">
-          <a href="Customer.html">Search Product</a>
+          <a href="searchProduct.php">Search Product</a>
           <a href="addProduct.php">Add Product</a>
           <a href="Customer.html">Update Product</a>
         </div>

@@ -91,13 +91,15 @@ header {
   backdrop-filter: blur(20px);
   width: 1000px;
   height: 500px;
-  border-radius: 10px
+  border-radius: 10px;
+  margin-left: 20px;
 }
 
 .wrap {
   width: 30%;
   top: 50%;
   left: 50%;
+  margin-left: 470px;
   transform: translate(-50%, -50%);
 }
 
@@ -164,4 +166,3 @@ header {
   background: #fff;
   color: black;
 }
-

@@ -22,7 +22,7 @@
       <div class="dropdown-container">
         <a href="">Inventory </a>
         <div class="dropdown-content">
-          <a href="Customer.html">Search Product</a>
+          <a href="searchProduct.php">Search Product</a>
           <a href="addProduct.php">Add Product</a>
           <a href="Customer.html">Update Product</a>
         </div>
@@ -36,17 +36,7 @@
     <a href="login.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
 
-  <main class="main_wrap">
-    <div style="padding-top: 20px;padding-left:70px">
-      <div class="wrap" style="margin-left:100px; margin-top:20px">
-        <div class="search">
-          <input type="text" class="searchTerm" placeholder="What are you looking for?">
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </div>
+  <main class="main_wrap"  style="padding-top: 50px;">
 
     <h1 style="color:#ffffff;margin-left:40%; margin-bottom: 100px;">Add Item Here</h1>
 
