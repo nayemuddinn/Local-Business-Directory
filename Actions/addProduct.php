@@ -1,3 +1,8 @@
+<?php 
+      if(!isset($_SESSION['valid']))
+      header("Location: login.php");  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +38,7 @@
       <a href="Profile.html">Profile</a>
 
     </nav>
-    <a href="login.php"> <button class="btnLogin-popup">Log out</button></a>
+    <a href="logout.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
 
   <main class="main_wrap" style="padding-top: 50px;">
