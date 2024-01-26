@@ -36,17 +36,28 @@
           echo "<div class='register-link'>
             <p>This email is used, Try another One Please!</p>
         </div> <br>";
-        echo "<a href='registration.php'><button class='btn'>Go Back</button>";
+          echo "<a href='registration.php'><button class='btn'>Go Back</button>";
         } else {
 
-          mysqli_query($conn, "INSERT INTO users(Name,Email,Password,Phone,Address) VALUES('$name','$email','$password','$phone','$address')") or die("Erroe Occured");
+          $conn->begin_Transaction();
 
-          echo "<div class='register-link'>
-              <p>Registration successfully!</p>
-          </div> <br>";
+          try {
+            mysqli_query($conn, "INSERT INTO users(Name,Email,Password,Phone,Address) VALUES('$name','$email','$password','$phone','$address')") or die("Erroe Occured");
+            $conn->commit();
+            echo "<div class='register-link'>
+                <p>Registration successfully!</p>
+            </div> <br>";
+            echo "<a href='login.php'><button class='btn'>Login Now</button>";
 
-          echo "<a href='login.php'><button class='btn'>Login Now</button>";
-        
+          } catch (Exception $e) {
+            echo "<div class='message'>
+          <p>Registration Failed !</p>
+           </div> <br>";
+            echo "<a href='addproduct.php'><button class='btn'>Try Again</button>";
+            $conn->rollback();
+          }
+
+
 
 
         }
