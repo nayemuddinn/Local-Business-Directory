@@ -20,7 +20,7 @@
       <a href="dashboard.php">Dashboard</a>
 
       <div class="dropdown-container">
-        <a href="Inventory.php">Inventory </a>
+        <a href="">Inventory </a>
         <div class="dropdown-content">
           <a href="Customer.html">Search Product</a>
           <a href="addProduct.php">Add Product</a>
