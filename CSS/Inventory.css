@@ -144,3 +144,24 @@ header {
   font-size: 1.2em;
   line-height: 50px;
 }
+
+.btn {
+  width: 100px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid white;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: whitesmoke;
+  font-weight: 500;
+  margin-left: 150px;
+  margin-top: 55px;
+}
+
+.btn:hover {
+  background: #fff;
+  color: black;
+}
+

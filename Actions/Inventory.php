@@ -79,9 +79,7 @@
             <option value="Stationary">Stationary</option>
           </select>
         </div>
-
-
-
+        <button type="submit" class="btn" name="additem">Add Items</button>
       </form>
     </body>
   </main>
