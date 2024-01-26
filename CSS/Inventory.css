@@ -166,3 +166,15 @@ header {
   background: #fff;
   color: black;
 }
+
+.message {
+  font-weight: 1;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  margin: auto;
+  width: 30%;
+  padding-left: 20px;
+  padding: 10px;
+
+}
