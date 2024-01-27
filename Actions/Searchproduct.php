@@ -25,7 +25,7 @@
                 <div class="dropdown-content">
                     <a href="Customer.html">Search Product</a>
                     <a href="addProduct.php">Add Product</a>
-                    <a href="Customer.html">Update Product</a>
+                      <a href="updateProduct.php">Update Product</a>
                 </div>
             </div>
 
@@ -66,9 +66,6 @@
                                     <th>Price</th>
                                     <th>Available</th>
                                     <th>Unit</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-
                                 </tr>
                                 <tr>
 
@@ -97,9 +94,6 @@
                                         <td>
                                             <?php echo $row['unit']; ?>
                                         </td>
-
-                                        <td><a href="updateproduct.html" class="tbtn">Edit</a></td>
-                                        <td><a href="#" class="dbtn">Delete</a></td>
 
                                     </tr>
                                     <?php

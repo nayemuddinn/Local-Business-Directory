@@ -24,7 +24,7 @@
         <div class="dropdown-content">
           <a href="searchProduct.php">Search Product</a>
           <a href="addProduct.php">Add Product</a>
-          <a href="updateProduct.php">Update Product</a>
+          <a href="Customer.html">Update Product</a>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
 
   <main class="main_wrap" style="padding-top: 50px;">
 
-    <h1 style="color:#ffffff;margin-left:40%; margin-bottom: 100px;">Add Item Here</h1>
+    <h1 style="color:#ffffff;margin-left:40%; margin-bottom: 100px;">Update Item</h1>
 
     <?php
 

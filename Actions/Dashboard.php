@@ -24,7 +24,7 @@
         <div class="dropdown-content">
           <a href="searchProduct.php">Search Product</a>
           <a href="addProduct.php">Add Product</a>
-          <a href="Customer.html">Update Product</a>
+          <a href="updateProduct.php">Update Product</a>
         </div>
       </div>
 
