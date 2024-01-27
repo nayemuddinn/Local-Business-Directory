@@ -1,6 +1,6 @@
-< ?php
+<?php
 session_start();
 unset($_SESSION['valid']);  
-session_destro();
+session_destroy();
 header("Location: login.php");
 ?>

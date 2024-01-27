@@ -1,7 +1,4 @@
-<?php
-if (!isset($_SESSION['valid']))
-    header("Location: login.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
