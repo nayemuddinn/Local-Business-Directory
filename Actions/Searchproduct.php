@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Inventory</title>
     <link rel="stylesheet" href="../CSS/home.css">
-    <link rel="stylesheet" href="../CSS/Inventory.css">
+          <link rel="stylesheet" href="../CSS/Inventory.css">
     <link rel="stylesheet" href="../CSS/tableStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -51,59 +50,69 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
         <div class="container">
-            <h1 class="table-title">Products</h1>
+            <div>
+                <div class="table-wrapper">
+                    <div>
+                        <div>
+                            <h2 style="color:white; font: weight 500px;">Products</h2>
+                        </div>
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Available</th>
+                                    <th>Unit</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
 
-            <div style="margin-left=200px;">
-                <div class="table-content">
-                    <?php
-                    include 'db_connection.php';
-                    $sql = "SELECT * FROM inventory";
-                    $result = $conn->query($sql);
+                                </tr>
+                                <tr>
 
-                    if ($result->num_rows > 0) {
-                        echo "<table border='0'>
-                            <th>productID</th>
-                            <th align='center'>productName</th>
-							<th align='center'>productCategory</th>
-							<th align='center'>price</th>
-							<th align='center'>available</th>
-							<th align='center'>unit</th>
-                        </tr>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
-                            <td>" . $row["productID"] . " " . "</td>
-                            <td>" . $row["productName"] . " " . "</td>
-							<td>" . $row["productCategory"] . " " . "</td>
-							<td>" . $row["price"] . " " . "</td>
-							<td>" . $row["available"] . " " . "</td>
-							<td>" . $row["unit"] . " " . "</td>
-                            
-                        </tr>";
-                        }
+                                    <?php
+                                    include 'db_connection.php';
+                                    $sql = "SELECT * FROM inventory";
+                                    $result = $conn->query($sql);
 
-                        echo "</table>";
-                    } else {
-                        echo "0 results";
-                    }
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                        <td>
+                                            <?php echo $row['productID']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['productName']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['productCategory']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['price']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['available']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['unit']; ?>
+                                        </td>
 
-                    $conn->close();
-                    ?>
+                                        <td><a href="updateproduct.html" class="tbtn">Edit</a></td>
+                                        <td><a href="#" class="dbtn">Delete</a></td>
+
+                                    </tr>
+                                    <?php
+                                    }
+
+                                    ?>
+
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
 
     </main>
 </body>

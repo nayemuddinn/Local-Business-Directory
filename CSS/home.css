@@ -1,85 +1,88 @@
 .navigation a {
-    position: relative;
-    font-size: 1.7em;
-    color: #ffffff;
-    margin-left: 30px;
-    font-weight: 500;
-    min-height: 50px;
+  position: relative;
+  font-size: 1.7em;
+  color: #ffffff;
+  margin-left: 30px;
+  font-weight: 500;
+  min-height: 50px;
 }
 
+.navigation a:hover,
+.navigation a:active {
+    text-decoration: none; 
+}
 
 .navigation a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    border-radius: 5px;
-    background: #ffffff;
-    transform: scaleX(0);
-    transition: transform .5s;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transition: transform .5s;
 }
 
 .navigation a:hover::after {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 
 .btnLogin-popup {
-    width: 100px;
-    height: 30px;
-    background: transparent;
-    border: 2px solid white;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.3em;
-    color: rgb(255, 255, 255);
-    font-weight: 400;
-    margin-left: 40px;
+  width: 100px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid white;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.3em;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  margin-left: 40px;
 }
 
 
 .btnLogin-popup:hover {
 
-    background: #fff;
-    color: black;
+  background: #fff;
+  color: black;
 
 }
 
-.homewrap{
- color: #fff;
+.homewrap {
+  color: #fff;
 }
 
 
 .dropdown-container {
-    display: inline;
-    position: relative;
-  }
-  
-  .dropdown-content {
-    position: absolute;
-    top: 20px;
-    gap: 100px;
-    right: 0px;
-    left: 20px;
-    backdrop-filter: blur(20px);
-    font-size: 0.8em;
-    background-color: transparent;
-    text-align: left;
-    min-width: 140px;
-    height: fit-content;
-    display: none;
-  }
-  
-  .dropdown-content a {
-    display: block;
-    min-height: 25px;
-    padding-top: 10px;
-  }
-  
-  .dropdown-container:hover .dropdown-content {
-    display: block;
-  }
+  display: inline;
+  position: relative;
+}
 
+.dropdown-content {
+  position: absolute;
+  top: 20px;
+  gap: 100px;
+  right: 0px;
+  left: 20px;
+  backdrop-filter: blur(20px);
+  font-size: 0.8em;
+  background-color: transparent;
+  text-align: left;
+  min-width: 140px;
+  height: fit-content;
+  display: none;
+}
+
+.dropdown-content a {
+  display: block;
+  min-height: 25px;
+  padding-top: 10px;
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: block;
+}
