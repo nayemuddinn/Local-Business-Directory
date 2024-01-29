@@ -1,0 +1,93 @@
+<?php
+include 'db_connection.php';
+
+if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+    $pin = $_POST['pin'];
+    $password = $_POST['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row) {
+        // Verify hashed password
+        if (password_verify($pin, $row['Pin'])) {
+            $_SESSION['valid'] = $row['Email'];
+            $_SESSION['name'] = $row['Name'];
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            echo "<div class='message'>
+                <p>Wrong Password</p>
+                <br> <br> <br>
+                <div>";
+            echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+                </div>";
+        }
+    } else {
+        echo "<div class='message'>
+            <p>User not found</p>
+            <br> <br> <br>
+            <div>";
+        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+            </div>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Business Directory</title>
+    <link rel="stylesheet" href="../CSS/login.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h2 class="logo">Logo</h2>
+    </header>
+
+    <div class="login-wrapper">
+
+        <div class="form-box login">
+            <h2>Forgot Password</h2>
+            <form action="" method="post">
+
+            <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="email" id="email" autocomplete="off" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="text" name="pin" id="pin" autocomplete="off" required>
+                    <label>Pin</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" name="password" id="password" autocomplete="off" required>
+                    <label>New Password</label>
+</div>
+
+<div><br></div>
+                <button type="submit" class="btn" name="login">Submit</button>
+
+            </form>
+
+            <div class="register-link">
+                <a href="registration.php" class="register-link"> Don't have an account?</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

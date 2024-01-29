@@ -30,6 +30,11 @@
         $password = $_POST['password'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
+        $pin = $_POST['pin'];
+        //$encpassword = md5($password);
+        $password_hashed = password_hash($password, PASSWORD_DEFAULT);
+        $pin_hashed = password_hash($pin, PASSWORD_DEFAULT);
+
 
         $verify_query = mysqli_query($conn, "SELECT Email FROM users WHERE Email='$email'");
         if (mysqli_num_rows($verify_query) != 0) {
@@ -42,7 +47,7 @@
           $conn->begin_Transaction();
 
           try {
-            mysqli_query($conn, "INSERT INTO users(Name,Email,Password,Phone,Address) VALUES('$name','$email','$password','$phone','$address')") or die("Erroe Occured");
+            mysqli_query($conn, "INSERT INTO users(Name,Email,Pin,Password,Phone,Address) VALUES('$name','$email','$pin_hashed','$password_hashed','$phone','$address')") or die("Erroe Occured");
             $conn->commit();
             echo "<div class='register-link'>
                 <p>Registration successfully!</p>
@@ -53,7 +58,7 @@
             echo "<div class='message'>
           <p>Registration Failed !</p>
            </div> <br>";
-            echo "<a href='registration.php'><button class='btn'>Try Again</button>";
+            echo "<a href='addproduct.php'><button class='btn'>Try Again</button>";
             $conn->rollback();
           }
 
@@ -95,6 +100,12 @@
             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
             <input type="text" name="address" id="address" autocomplete="off" required>
             <label>Address</label>
+          </div>
+
+          <div class="input-box">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <input type="text" name="pin" id="pin" autocomplete="off" required>
+            <label>Pin</label>
           </div>
 
           <div class="remember-forgot">

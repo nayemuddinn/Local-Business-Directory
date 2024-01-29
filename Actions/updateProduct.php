@@ -102,7 +102,7 @@
                             <div style="display:flex;">
                                 <form action=" " method="POST">
                                     <div style="  margin-left: 280px;margin-top: 15px;" class="Ucenter">
-                                        <button type="submit" class="tbtn" name="updateitem" id="additem">Update</button>
+                                        <button type="submit" class="tbtn" name="updateitem" id="updateitem">Update</button>
                                     </div>
                                 </form>
                                 <form action=" " method="POST">
@@ -110,7 +110,7 @@
                                         <button type="submit" name='deleteitem' class="dbtn">Delete</button>
                                     </div>
                                 </form>
-                                <div>
+                            </div>
                         </form>
                     </body>
                     <?php
@@ -138,10 +138,35 @@
                 </div>";
             }
 
+        } 
 
 
 
-        }
+
+
+        /* if (isset($_POST['updateitem'])) {
+            
+        
+            $name = $_GET['productname'];
+            $price = $_GET['productprice'];
+            $quantity = $_GET['quantity'];
+            $unit = $_GET['unit'];
+
+            $que = "UPDATE inventoryt set productName='" . $_POST['$name'] . "', price='" . $_POST['$price'] . "', available='" . $_POST['quantity'] . "' ,unit='" . $_POST['unit'] . "'";
+
+            if ($conn->query($que) === TRUE) {
+                echo "<div class='center'> 
+                <p style='color:white; font-size:1.3em;'>Updated Successfully !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
+                </div>";
+            } else {
+                echo "<div class='center'> 
+                <p style='color:white; font-size:1.3em;'>Failed to Update !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
+                </div>";
+            }
+        }  */
+
+
+
 
 
         ?>

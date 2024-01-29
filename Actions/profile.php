@@ -81,11 +81,10 @@
 
                 </div>
 
-
             </form>
-
-
         </main>
+
+
 
         <main class="main_wrap2" style="padding-top: 50px;">
 
