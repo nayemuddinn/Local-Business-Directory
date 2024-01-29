@@ -24,7 +24,7 @@
                 <div class="dropdown-content">
                     <a href="searchProduct.php">Search Product</a>
                     <a href="addProduct.php">Add Product</a>
-                    <a href="Customer.html">Update Product</a>
+                    <a href="UpdateProduct.php">Update Product</a>
                 </div>
             </div>
 
@@ -64,6 +64,8 @@
 
             if (mysqli_num_rows($query_run) > 0) {
                 foreach ($query_run as $row) {
+
+
                     ?>
 
                     <body>
@@ -78,29 +80,32 @@
                             </div>
 
                             <div class="input-box">
-                                <input type="text"style="text-align:left; font-weight:600;" id="productprice" name="productprice"
+                                <input type="text" style="text-align:left; font-weight:600;" id="productprice" name="productprice"
                                     value="<?= $row['price']; ?>">
                                 <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="productPrice">Product
                                     Price</label>
                             </div>
 
                             <div class="input-box">
-                                <input type="number" style="text-align:left; font-weight:600;" name="quantity" value="<?= $row['available']; ?>">
+                                <input type="number" style="text-align:left; font-weight:600;" name="quantity"
+                                    value="<?= $row['available']; ?>">
                                 <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="name">Available
                                     Product</label>
                             </div>
 
                             <div class="input-box">
-                                <input type="text" style="text-align:left; font-weight:600;" name="unit" value="<?= $row['unit']; ?>">
+                                <input type="text" style="text-align:left; font-weight:600;" name="unit"
+                                    value="<?= $row['unit']; ?>">
                                 <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="unit">Product Unit</label>
                             </div>
                             <div style="  margin-left: 280px;margin-top: 15px;" class="Ucenter">
-                                <button type="submit" class="tbtn" name="additem" id="additem">Update</button>
+                                <button type="submit" class="tbtn" name="updateitem" id="additem">Update</button>
                             </div>
-
-                            <div style="margin-top: 16px;" class="Dcenter">
-                                <button class="dbtn">Delete</button>
-                            </div>
+                            <form action=" " method="POST">
+                                <div style="margin-top: 16px;"  class="Dcenter">
+                                    <button type="submit" name='deleteitem'  class="dbtn">Delete</button>
+                                </div>
+                            </form>
                         </form>
                     </body>
                     <?php
@@ -109,11 +114,35 @@
                 echo "<div class='center'> 
                 <p style='color:white; font-size:1.3em;'>Product Not Found !</p><a href='updateProduct.php'><button class='GoBack-btn'>Go Back</button>
                 </div>";
-          
+
             }
         }
 
+        
+        if (isset($_POST['deleteitem'])) {
+            $ida = $_GET['search'];
+            $que = "DELETE FROM inventory WHERE productID='$ida'";
+
+            if ($conn->query($que) === TRUE) {
+                echo "<div class='center'> 
+                <p style='color:white; font-size:1.3em;'>Deleted Successfully !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
+                </div>";
+              } else {
+                echo "<div class='center'> 
+                <p style='color:white; font-size:1.3em;'>Failed to Delete !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
+                </div>";
+              }
+     
+
+
+
+        }
+
         ?>
+
+
+
+
     </main>
 </body>
 
