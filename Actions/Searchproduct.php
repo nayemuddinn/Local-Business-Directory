@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Inventory</title>
     <link rel="stylesheet" href="../CSS/home.css">
-          <link rel="stylesheet" href="../CSS/Inventory.css">
+    <link rel="stylesheet" href="../CSS/Inventory.css">
     <link rel="stylesheet" href="../CSS/tableStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -25,13 +25,13 @@
                 <div class="dropdown-content">
                     <a href="Customer.html">Search Product</a>
                     <a href="addProduct.php">Add Product</a>
-                      <a href="updateProduct.php">Update Product</a>
+                    <a href="updateProduct.php">Update Product</a>
                 </div>
             </div>
 
             <a href="Bill.html">Bill</a>
-            <a href="Customer.html">Customers</a>
-            <a href="Profile.html">Profile</a>
+            <a href="Customer.php">Customers</a>
+            <a href="Profile.php">Profile</a>
 
         </nav>
         <a href="logout.php"> <button class="btnLogin-popup">Log out</button></a>

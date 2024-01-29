@@ -29,8 +29,8 @@
       </div>
 
       <a href="Bill.html">Bill</a>
-      <a href="Customer.html">Customers</a>
-      <a href="Profile.html">Profile</a>
+      <a href="Customer.php">Customers</a>
+      <a href="Profile.php">Profile</a>
 
     </nav>
     <a href="logout.php"> <button class="btnLogin-popup">Log out</button></a>

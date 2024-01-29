@@ -29,8 +29,8 @@
             </div>
 
             <a href="Bill.html">Bill</a>
-            <a href="Customer.html">Customers</a>
-            <a href="Profile.html">Profile</a>
+            <a href="Customer.php">Customers</a>
+            <a href="profile.php">Profile</a>
 
         </nav>
         <a href="logout.php"> <button class="btnLogin-popup">Log out</button></a>
@@ -98,14 +98,19 @@
                                     value="<?= $row['unit']; ?>">
                                 <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="unit">Product Unit</label>
                             </div>
-                            <div style="  margin-left: 280px;margin-top: 15px;" class="Ucenter">
-                                <button type="submit" class="tbtn" name="updateitem" id="additem">Update</button>
-                            </div>
-                            <form action=" " method="POST">
-                                <div style="margin-top: 16px;"  class="Dcenter">
-                                    <button type="submit" name='deleteitem'  class="dbtn">Delete</button>
-                                </div>
-                            </form>
+
+                            <div style="display:flex;">
+                                <form action=" " method="POST">
+                                    <div style="  margin-left: 280px;margin-top: 15px;" class="Ucenter">
+                                        <button type="submit" class="tbtn" name="updateitem" id="additem">Update</button>
+                                    </div>
+                                </form>
+                                <form action=" " method="POST">
+                                    <div style="margin-top: 16px;margin-left:15px;" class="Dcenter">
+                                        <button type="submit" name='deleteitem' class="dbtn">Delete</button>
+                                    </div>
+                                </form>
+                                <div>
                         </form>
                     </body>
                     <?php
@@ -118,7 +123,7 @@
             }
         }
 
-        
+
         if (isset($_POST['deleteitem'])) {
             $ida = $_GET['search'];
             $que = "DELETE FROM inventory WHERE productID='$ida'";
@@ -127,16 +132,17 @@
                 echo "<div class='center'> 
                 <p style='color:white; font-size:1.3em;'>Deleted Successfully !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
                 </div>";
-              } else {
+            } else {
                 echo "<div class='center'> 
                 <p style='color:white; font-size:1.3em;'>Failed to Delete !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
                 </div>";
-              }
-     
+            }
+
 
 
 
         }
+
 
         ?>
 
