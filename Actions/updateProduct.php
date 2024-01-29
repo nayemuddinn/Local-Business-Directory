@@ -43,9 +43,7 @@
             <div class="wrap" style="margin-right:300px; margin-top:10px">
                 <form action=" " method="GET">
                     <div class="search">
-                        <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                            echo $_GET['search'];
-                        } ?>" class="searchTern">
+                        <input type="text" name="search" placeholder="Search here" class="searchTern">
                         <button type="submit" class="searchButton">
                             <i class="fa fa-search"></i>
                         </button>
@@ -108,7 +106,10 @@
                     <?php
                 }
             } else {
-                echo "No Record Found";
+                echo "<div class='center'> 
+                <p style='color:white; font-size:1.3em;'>Product Not Found !</p><a href='updateProduct.php'><button class='GoBack-btn'>Go Back</button>
+                </div>";
+          
             }
         }
 

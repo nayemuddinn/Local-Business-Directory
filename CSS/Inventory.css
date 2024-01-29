@@ -148,6 +148,14 @@ header {
 }
 
 
+.center {
+  margin-top: 70px;
+  margin-left:420px;
+  width: 50%;
+  padding: 10px;
+}
+
+
 
 .input-box .icon {
   position: absolute;
@@ -223,4 +231,26 @@ header {
   background: #ffffff;
   color: black;
 }
+
+.GoBack-btn
+{
+    width: 100px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: whitesmoke;
+    font-weight: 500;
+    margin-right: 400px;
+    margin-top: 25px;
+}
+
+.GoBack-btn:hover {
+    background: #fff;
+    color: black;
+}
+
 

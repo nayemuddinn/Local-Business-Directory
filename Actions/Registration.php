@@ -53,7 +53,7 @@
             echo "<div class='message'>
           <p>Registration Failed !</p>
            </div> <br>";
-            echo "<a href='addproduct.php'><button class='btn'>Try Again</button>";
+            echo "<a href='registration.php'><button class='btn'>Try Again</button>";
             $conn->rollback();
           }
 
