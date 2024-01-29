@@ -1,40 +1,3 @@
-<?php
-include 'db_connection.php';
-
-if (isset($_POST['email'])) {
-    $email = $_POST['email'];
-    $pin = $_POST['pin'];
-    $password = $_POST['password'];
-
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
-    $row = mysqli_fetch_assoc($result);
-
-    if ($row) {
-        // Verify hashed password
-        if (password_verify($pin, $row['Pin'])) {
-            $_SESSION['valid'] = $row['Email'];
-            $_SESSION['name'] = $row['Name'];
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "<div class='message'>
-                <p>Wrong Password</p>
-                <br> <br> <br>
-                <div>";
-            echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
-                </div>";
-        }
-    } else {
-        echo "<div class='message'>
-            <p>User not found</p>
-            <br> <br> <br>
-            <div>";
-        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
-            </div>";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,43 +12,81 @@ if (isset($_POST['email'])) {
 
 <body>
 
-    <header>
-        <h2 class="logo">Logo</h2>
-    </header>
 
-    <div class="login-wrapper">
+    <?php
+    include 'db_connection.php';
 
-        <div class="form-box login">
-            <h2>Forgot Password</h2>
-            <form action="" method="post">
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
+        $pin = $_POST['pin'];
+        $password = $_POST['password'];
 
-            <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" name="email" id="email" autocomplete="off" required>
-                    <label>Email</label>
+        $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
+        $row = mysqli_fetch_assoc($result);
+
+        if ($row) {
+
+            $query = "UPDATE users  set password='" . $_POST['password'] . "' WHERE email='" . $_POST['email'] . "'";
+
+            if ($conn->query($query) === TRUE) {
+                echo "<div class='center'> 
+             <p style='color:white; font-size:1.3em;'>Reset Successfully !</p><a href='login.php'><button class='GoBack-btn'>Login Now</button>
+             </div>";
+            } else {
+                echo "<div class='center'> 
+             <p style='color:white; font-size:1.3em;'>Failed to Reset Password !</p><a href='forgetPassword.php'><button class='GoBack-btn'>Try Again !</button>
+             </div>";
+            }
+        } else {
+            echo "<div class='message'>
+            <p>No user Found</p>
+            <br> <br> <br>
+            <div>";
+            echo "<div> <a href='forgetPassword.php'><button class='GoBack-btn'>Go Back</button>
+            </div>";
+        }
+    } else {
+
+        ?>
+
+        <header>
+            <h2 class="logo">Logo</h2>
+        </header>
+
+        <div class="login-wrapper">
+
+            <div class="form-box login">
+                <h2>Forgot Password</h2>
+                <form action="" method="post">
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        <input type="email" name="email" id="email" autocomplete="off" required>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        <input type="text" name="pin" id="pin" autocomplete="off" required>
+                        <label>Pin</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" name="password" id="password" autocomplete="off" required>
+                        <label>New Password</label>
+                    </div>
+
+                    <div><br></div>
+                    <button type="submit" class="btn" name="login">Submit</button>
+
+                </form>
+
+                <div class="register-link">
+                    <a href="registration.php" class="register-link"> Don't have an account?</a>
                 </div>
-
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="text" name="pin" id="pin" autocomplete="off" required>
-                    <label>Pin</label>
-                </div>
-
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" name="password" id="password" autocomplete="off" required>
-                    <label>New Password</label>
-</div>
-
-<div><br></div>
-                <button type="submit" class="btn" name="login">Submit</button>
-
-            </form>
-
-            <div class="register-link">
-                <a href="registration.php" class="register-link"> Don't have an account?</a>
             </div>
-        </div>
+        <?php } ?>
     </div>
 
 </body>

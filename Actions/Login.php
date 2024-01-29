@@ -19,31 +19,49 @@ session_start();
 
   include 'db_connection.php';
 
-  if (isset($_POST['login'])) {
+
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email' AND Password='$password' ") or die("Select Error");
+   
+     
+    
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
     $row = mysqli_fetch_assoc($result);
+     
+    if (is_array($row) && !empty($row)){
 
-    if (is_array($row) && !empty($row)) {
-      $_SESSION['valid'] = $row['Email'];
-      $_SESSION['name'] = $row['Name'];
+        // Verify hashed password
+        if (password_verify($password, $row['Password'])) {
+            $_SESSION['valid'] = $row['Email'];
+            $_SESSION['name'] = $row['Name'];
+    
+        }
+        echo "<div class='message'>
+            <p>Wrong credential</p>
+            <br> <br> <br>
+            <div>";
+        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+            </div>";
+
+        if (isset($_SESSION['valid'])) {
+            header("Location: dashboard.php");
+          }
+
     } else {
-      echo "<div class='message'>
-      <p>Wrong Username or Password</p>
-      <br> <br> <br>
-       <div>";
-      echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
-      </div>";
-
-    }
-    if (isset($_SESSION['valid'])) {
-      header("Location: dashboard.php");
+        echo "<div class='message'>
+            <p>Wrong credential</p>
+            <br> <br> <br>
+            <div>";
+        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+            </div>";
     }
 
-  } else {
+   
+ 
+
+
+} else {
 
     ?>
 
@@ -69,7 +87,7 @@ session_start();
           </div>
 
           <div class="remember-forgot">
-            <a href="#">Forgot Password?</a>
+            <a href="forgetPassword.php">Forgot Password?</a>
           </div>
 
           <button type="submit" class="btn" name="login">Login</button>
