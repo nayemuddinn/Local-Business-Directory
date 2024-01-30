@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
     
         }
         echo "<div class='message'>
-            <p>Wrong credential</p>
+            <p>Wrong Password</p>
             <br> <br> <br>
             <div>";
         echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
 
     } else {
         echo "<div class='message'>
-            <p>Wrong credential</p>
+            <p>User Not Found</p>
             <br> <br> <br>
             <div>";
         echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>

@@ -58,7 +58,7 @@
             echo "<div class='message'>
           <p>Registration Failed !</p>
            </div> <br>";
-            echo "<a href='addproduct.php'><button class='btn'>Try Again</button>";
+            echo "<a href='registration.php'><button class='btn'>Try Again</button>";
             $conn->rollback();
           }
 
@@ -104,12 +104,8 @@
 
           <div class="input-box">
             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-            <input type="text" name="pin" id="pin" autocomplete="off" required>
+            <input type="password" name="pin" id="pin" autocomplete="off" required>
             <label>Pin</label>
-          </div>
-
-          <div class="remember-forgot">
-            <a href="#">Forgot Password?</a>
           </div>
 
           <div>

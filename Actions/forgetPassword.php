@@ -12,43 +12,45 @@
 
 <body>
 
+<?php
+include 'db_connection.php';
 
-    <?php
-    include 'db_connection.php';
+if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+    $pin = $_POST['pin'];
+    $password = $_POST['password'];
+    
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_pin = password_hash($pin, PASSWORD_DEFAULT);
 
-    if (isset($_POST['email'])) {
-        $email = $_POST['email'];
-        $pin = $_POST['pin'];
-        $password = $_POST['password'];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email' and PIN=$pin") or die("Select Error");
+    $row = mysqli_fetch_assoc($result);
 
-        $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
-        $row = mysqli_fetch_assoc($result);
+    if ($row) {
 
-        if ($row) {
+        echo'kutta';
+        $query = "UPDATE users SET password='$hashed_password' WHERE email='$email'";
 
-            $query = "UPDATE users  set password='" . $_POST['password'] . "' WHERE email='" . $_POST['email'] . "'";
-
-            if ($conn->query($query) === TRUE) {
-                echo "<div class='center'> 
-             <p style='color:white; font-size:1.3em;'>Reset Successfully !</p><a href='login.php'><button class='GoBack-btn'>Login Now</button>
-             </div>";
-            } else {
-                echo "<div class='center'> 
-             <p style='color:white; font-size:1.3em;'>Failed to Reset Password !</p><a href='forgetPassword.php'><button class='GoBack-btn'>Try Again !</button>
-             </div>";
-            }
+        if ($conn->query($query) === TRUE) {
+            echo "<div class='center'> 
+                 <p style='color:white; font-size:1.3em;'>Reset Successfully !</p><a href='login.php'><button class='GoBack-btn'>Login Now</button>
+                 </div>";
         } else {
-            echo "<div class='message'>
-            <p>No user Found</p>
-            <br> <br> <br>
-            <div>";
-            echo "<div> <a href='forgetPassword.php'><button class='GoBack-btn'>Go Back</button>
-            </div>";
+            echo "<div class='center'> 
+                 <p style='color:white; font-size:1.3em;'>Failed to Reset Password !</p><a href='forgetPassword.php'><button class='GoBack-btn'>Try Again !</button>
+                 </div>";
         }
     } else {
-
-        ?>
-
+        echo "<div class='message'>
+        <p>No user Found</p>
+        <br> <br> <br>
+        <div>";
+        echo "<div> <a href='forgetPassword.php'><button class='GoBack-btn'>Go Back</button>
+        </div>";
+    }
+} else {
+?>
         <header>
             <h2 class="logo">Logo</h2>
         </header>
@@ -67,7 +69,7 @@
 
                     <div class="input-box">
                         <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        <input type="text" name="pin" id="pin" autocomplete="off" required>
+                        <input type="password" name="pin" id="pin" autocomplete="off" required>
                         <label>Pin</label>
                     </div>
 
