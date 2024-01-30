@@ -47,46 +47,60 @@
 
             <h1 style="color:#ffffff;margin-left:40%; margin-bottom: 100px;">Profile</h1>
 
-            <form action="" method="post">
-                <div style=" margin-left:50px">
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                        <input type="text" name="name" id="name" autocomplete="off" required>
-                        <label>Name</labe1>
-                    </div>
+            <?php
 
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        <input type="email" name="email" id="email" autocomplete="off" required>
-                        <label>Email</label>
-                    </div>
+            session_start();
+            $email = $_SESSION['valid'];
 
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                        <input type="password" name="password" id="password" autocomplete="off" required>
-                        <label>Password</label>
-                    </div>
+            include 'db_connection.php';
 
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="call-outline"></ion-icon></ion-icon></span>
-                        <input type="text" name="phone" id="phone" autocomplete="off" required>
-                        <label>Phone</label>
-                    </div>
+            $query = "SELECT * FROM users WHERE email='$email'";
+            $query_run = mysqli_query($conn, $query);
 
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <input type="text" name="address" id="address" autocomplete="off" required>
-                        <label>Address</label>
-                    </div>
+            if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $row) {
+                    ?>
+
+                    <body>
+                        <form action="" method="post">
+                            <div style=" margin-left:50px">
+                                <div class="input-box">
+                                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                                    <input type="text" name="name" id="name" value="<?= $row['Name']; ?>">
+                                    <label>Name</labe1>
+                                </div>
+
+                                <div class="input-box">
+                                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                                    <input type="email" name="email" autocomplete="off" value="<?= $row['Email']; ?>">
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="input-box">
+                                    <span class="icon"><ion-icon name="call-outline"></ion-icon></ion-icon></span>
+                                    <input type="text" name="phone" id="phone" value="<?= $row['Phone']; ?>">
+                                    <label>Phone</label>
+                                </div>
+
+                                <div class="input-box">
+                                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                                    <input type="text" name="address" id="address" value="<?= $row['Address']; ?>">
+                                    <label>Address</label>
+                                </div>
 
 
-                    <div>
-                        <input type="submit" class="btn" name="update" value="Update" required>
-                    </div>
+                                <div>
+                                    <input type="submit" class="btn" name="update" value="Update" required>
+                                </div>
 
-                </div>
+                            </div>
+                        </form>
+                    </body>
+                    <?php
+                }
+            }
+            ?>
 
-            </form>
         </main>
 
 

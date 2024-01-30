@@ -46,6 +46,7 @@ if (isset($_POST['login'])) {
 
         if (isset($_SESSION['valid'])) {
             header("Location: dashboard.php");
+            exit;
           }
 
     } else {

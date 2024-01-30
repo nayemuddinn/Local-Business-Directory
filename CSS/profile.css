@@ -97,9 +97,10 @@ header {
     width: 100%;
     height: 100%;
     background: transparent;
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     border: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    font-weight: 700;
     outline: none;
     padding: 0 35px 0 5px;
   }
