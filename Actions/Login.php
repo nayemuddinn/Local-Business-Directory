@@ -41,7 +41,7 @@ if (isset($_POST['login'])) {
             <p>Wrong Password</p>
             <br> <br> <br>
             <div>";
-        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+            echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
             </div>";
 
         if (isset($_SESSION['valid'])) {
@@ -53,7 +53,7 @@ if (isset($_POST['login'])) {
             <p>User Not Found</p>
             <br> <br> <br>
             <div>";
-        echo "<div> <a href='login.php'><button class='GoBack-btn'>Go Back</button>
+        echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
             </div>";
     }
 

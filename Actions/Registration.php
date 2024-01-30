@@ -41,7 +41,8 @@
           echo "<div class='register-link'>
             <p>This email is used, Try another One Please!</p>
         </div> <br>";
-          echo "<a href='registration.php'><button class='btn'>Go Back</button>";
+        echo "<div style='margin-left:100px;'> <a href='registration.php'><button class='GoBack-btn'>Try Again</button></a>
+        </div>";
         } else {
 
           $conn->begin_Transaction();
