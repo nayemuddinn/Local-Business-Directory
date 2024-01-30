@@ -15,7 +15,12 @@
 <body>
 
     <header>
-        <h2 class="logo">Logo</h2>
+        <div style="display: block;">
+            <img src="../Assets/logo.png" />
+            <p>
+            <h4>Local Business Directory</h4>
+            </p>
+        </div>
         <nav class="navigation">
 
             <a href="dashboard.php">Dashboard</a>
@@ -58,7 +63,7 @@
                     echo "<div class='message'>
       <p>Customer Already Exist!</p>
   </div> <br>";
-  echo "<a href='customer.php'><div class='bcenter'><button class='btn'>Try Again</button> </div></a>";
+                    echo "<a href='customer.php'><div class='bcenter'><button class='btn'>Try Again</button> </div></a>";
                 } else {
 
                     $conn->begin_Transaction();
@@ -93,7 +98,8 @@
 
                         <div class="input-box">
                             <input type="email" style="margin-left: 15px;" name="customeremail" autocomplete="off" required>
-                            <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="customeremail">Email</label>
+                            <label style="color:#ffffff; font-size:1.2em; font-weight: 700;"
+                                for="customeremail">Email</label>
                         </div>
 
                         <div class="input-box">
@@ -102,7 +108,7 @@
                         </div>
 
                         <div class="input-box">
-                            <input type="text" style="margin-left: 5px;" name="customeraddress"autocomplete="off" required>
+                            <input type="text" style="margin-left: 5px;" name="customeraddress" autocomplete="off" required>
                             <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="address">Address</label>
                         </div>
 
@@ -118,15 +124,18 @@
 
 
         <main class="main_wrap">
-            <h1 style="padding-top:15px;margin-top:50px; color:#ffffff;margin-left:37%; margin-bottom: 30px;">Search Customer Here</h1>
-            <div style="margin-right:100px">
-                <div class="wrap" style="margin-right:300px; margin-top:20px">
-                    <div class="search">
-                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                        <button type="submit" class="searchButton">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+            <h1 style="padding-top:15px;margin-top:50px; color:#ffffff;margin-left:37%; margin-bottom: 30px;">Search
+                Customer Here</h1>
+            <div style="margin-left:280px">
+                <div class="wrap" style="margin-right:300px; margin-top:10px">
+                    <form action=" " method="GET">
+                        <div class="search">
+                            <input type="text" name="search" placeholder="Search here" class="searchTern">
+                            <button type="submit" class="searchButton">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="container">
@@ -149,9 +158,27 @@
 
                                         <?php
                                         include 'db_connection.php';
-                                        $sql = "SELECT * FROM customers";
-                                        $result = $conn->query($sql);
 
+
+                                        if (isset($_GET['search'])) {
+                                            $name = $_GET['search'];
+                                            $sql = "SELECT * FROM customers where CustomerID='$name'";
+    
+                                        } else {
+                                            $sql = "SELECT * FROM customers";
+                                        }
+
+                                    
+    
+                                        $result = $conn->query($sql);
+                                        $result2 = $conn->query($sql);
+                                        $res = mysqli_fetch_assoc($result2);
+
+                                    
+                                        if ($res == 0) {
+                                            echo "<div>  <p style='margin-top:50px;color:white; font-weight:400;font-size:1.3em'>Not Result Found!</p> </div> <br>";
+
+                                        } else {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
                                             <td>
@@ -174,6 +201,7 @@
                                         </tr>
                                         <?php
                                         }
+                                    }
 
                                         ?>
 

@@ -13,7 +13,12 @@
 <body>
 
   <header>
-    <h2 class="logo">Logo</h2>
+    <div style="display: block;">
+      <img src="../Assets/logo.png" />
+      <p>
+      <h4>Local Business Directory</h4>
+      </p>
+    </div>
   </header>
 
   <div class="registration-wrapper">
@@ -41,7 +46,7 @@
           echo "<div class='register-link'>
             <p>This email is used, Try another One Please!</p>
         </div> <br>";
-        echo "<div style='margin-left:100px;'> <a href='registration.php'><button class='GoBack-btn'>Try Again</button></a>
+          echo "<div style='margin-left:100px;'> <a href='registration.php'><button class='GoBack-btn'>Try Again</button></a>
         </div>";
         } else {
 

@@ -14,7 +14,12 @@
 <body>
 
     <header>
-        <h2 class="logo">Logo</h2>
+        <div style="display: block;">
+            <img src="../Assets/logo.png" />
+            <p>
+            <h4>Local Business Directory</h4>
+            </p>
+        </div>
         <nav class="navigation">
 
             <a href="dashboard.php">Dashboard</a>
@@ -108,7 +113,7 @@
                         <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                         <input type="password" name="cnoass" id="cnpass" autocomplete="off" required>
                         <label>Confirm New Password</label>
-                    </div> 
+                    </div>
 
                     <div>
                         <input type="submit" class="btn" name="update" value="Update" required>

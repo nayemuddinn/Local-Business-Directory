@@ -15,7 +15,12 @@
 <body>
 
     <header>
-        <h2 class="logo">Logo</h2>
+        <div style="display: block;">
+            <img src="../Assets/logo.png" />
+            <p>
+            <h4>Local Business Directory</h4>
+            </p>
+        </div>
         <nav class="navigation">
 
             <a href="dashboard.php">Dashboard</a>
@@ -23,7 +28,7 @@
             <div class="dropdown-container">
                 <a href="">Inventory </a>
                 <div class="dropdown-content">
-                    <a href="Customer.html">Search Product</a>
+                   <a href="searchProduct.php">Search Product</a>
                     <a href="addProduct.php">Add Product</a>
                     <a href="updateProduct.php">Update Product</a>
                 </div>
@@ -74,53 +79,53 @@
                                     <?php
                                     include 'db_connection.php';
 
-                                  
+
 
                                     if (isset($_GET['search'])) {
                                         $cat = $_GET['search'];
                                         $sql = "SELECT * FROM inventory where productCategory='$cat'";
-                                     
+
                                     } else {
-                                         $sql = "SELECT * FROM inventory";
+                                        $sql = "SELECT * FROM inventory";
                                     }
 
-                                 
+
 
                                     $result = $conn->query($sql);
-                                    $row = mysqli_fetch_assoc($result);
+                                    $result2 = $conn->query($sql);
+                                    $res = mysqli_fetch_assoc($result2);
 
-                                    if($row==0)
-                                    {
+                                    if ($res == 0) {
                                         echo "<div>  <p style='margin-top:50px;color:white; font-weight:400;font-size:1.3em'>Not Result Found!</p> </div> <br>";
-      
 
-                                    }else{
 
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                        <td>
-                                            <?php echo $row['productID']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['productName']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['productCategory']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['price']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['available']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['unit']; ?>
-                                        </td>
+                                    } else {
 
-                                    </tr>
-                                    <?php
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                            <td>
+                                                <?php echo $row['productID']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['productName']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['productCategory']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['price']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['available']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['unit']; ?>
+                                            </td>
+
+                                        </tr>
+                                        <?php
+                                        }
                                     }
-                                }
 
                                     ?>
 

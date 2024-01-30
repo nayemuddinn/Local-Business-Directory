@@ -14,7 +14,12 @@
 <body>
 
     <header>
-        <h2 class="logo">Logo</h2>
+        <div style="display: block;">
+            <img src="../Assets/logo.png" />
+            <p>
+            <h4>Local Business Directory</h4>
+            </p>
+        </div>
         <nav class="navigation">
 
             <a href="dashboard.php">Dashboard</a>
@@ -138,7 +143,7 @@
                 </div>";
             }
 
-        } 
+        }
 
 
 
