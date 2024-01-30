@@ -44,6 +44,14 @@
   margin-left: 40px;
 }
 
+.logo {
+  position: relative;
+  font-size: 2em;
+  color: #fb0000;
+}
+
+
+
 
 .btnLogin-popup:hover {
 

@@ -114,6 +114,7 @@
               <option value="clothing">Clothing</option>
               <option value="grocery">Grocery</option>
               <option value="medicine">Medicine</option>
+              <option value="Food And Drinks">Food and Drinks</option>
               <option value="personalcare">Personal Care</option>
               <option value="Kids">Kids</option>
               <option value="Kitchen">Kitchen</option>

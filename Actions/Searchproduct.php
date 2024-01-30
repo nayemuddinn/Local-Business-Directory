@@ -40,14 +40,16 @@
 
     <main class="main_wrap">
         <h1 style="margin-top:50px; color:#ffffff;margin-left:40%; margin-bottom: 50px;">Search Item Here</h1>
-        <div style="margin-right:100px">
-            <div class="wrap" style="margin-right:300px; margin-top:20px">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                    <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
+        <div style="margin-left:280px">
+            <div class="wrap" style="margin-right:300px; margin-top:10px">
+                <form action=" " method="GET">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="Search here" class="searchTern">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="container">
@@ -71,8 +73,28 @@
 
                                     <?php
                                     include 'db_connection.php';
-                                    $sql = "SELECT * FROM inventory";
+
+                                  
+
+                                    if (isset($_GET['search'])) {
+                                        $cat = $_GET['search'];
+                                        $sql = "SELECT * FROM inventory where productCategory='$cat'";
+                                     
+                                    } else {
+                                         $sql = "SELECT * FROM inventory";
+                                    }
+
+                                 
+
                                     $result = $conn->query($sql);
+                                    $row = mysqli_fetch_assoc($result);
+
+                                    if($row==0)
+                                    {
+                                        echo "<div>  <p style='margin-top:50px;color:white; font-weight:400;font-size:1.3em'>Not Result Found!</p> </div> <br>";
+      
+
+                                    }else{
 
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
@@ -98,6 +120,7 @@
                                     </tr>
                                     <?php
                                     }
+                                }
 
                                     ?>
 
