@@ -113,7 +113,7 @@
                 $name = $_POST['name'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
-                
+
                 $conn->begin_Transaction();
 
                 try {
@@ -147,7 +147,7 @@
                 <div style=" margin-left:50px">
                     <div class="input-box">
                         <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                        <input type="password" name="cpass" id="cpass" autocomplete="off" required>
+                        <input type="password" name="cpass" id="cpass"  required>
                         <label>Current Password</labe1>
                     </div>
 
@@ -159,18 +159,66 @@
 
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                        <input type="password" name="cnoass" id="cnpass" autocomplete="off" required>
+                        <input type="password" name="cnpass" id="cnpass" autocomplete="off" required>
                         <label>Confirm New Password</label>
                     </div>
 
                     <div>
-                        <input type="submit" class="btn" name="update" value="Update" required>
+                        <input type="submit" class="btn" name="updatepass" value="Update" required>
                     </div>
 
                 </div>
 
 
             </form>
+
+            <?php
+            include 'db_connection.php';
+
+            if (isset($_POST['updatepass'])) {
+
+                $email = $_SESSION['valid'];
+                $cpass = $_POST['cpass'];
+                $npass = $_POST['npass'];
+                $cnpass = $_POST['cnpass'];
+
+                $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
+                $row = mysqli_fetch_assoc($result);
+
+                if (password_verify($cpass, $row['Password'])) {
+                    if ($npass == $cnpass) {
+                        $hashed_password = password_hash($npass, PASSWORD_DEFAULT);
+                        $conn->begin_Transaction();
+                        try {
+                            mysqli_query($conn, "UPDATE users SET Password='$hashed_password' WHERE email='$email'");
+                            $conn->commit();
+                            echo "<div style='margin-top:20px;margin-left:140px;'> 
+                 <p style='color:white; font-size:1.3em;'>Updated Successfully !</p><a href='profile.php'></a>
+                 </div>";
+
+                        } catch (Exception $e) {
+                            echo "<div class='center'> 
+            <p style='color:white; font-size:1.3em;'>Failed to Changed Password !</p><a href='forgetPassword.php'><button class='GoBack-btn'>Try Again !</button>
+            </div>";
+                            $conn->rollback();
+                        }
+
+                    } else {
+                        echo "<div style='margin-top:20px;margin-left:140px;'> 
+                        <p style='color:white; font-size:1.3em;'>Password Don't Match !</p><a href='profile.php'></a>
+                        </div>";
+                    }
+                } else {
+                    echo "<div style='margin-top:20px;margin-left:140px;'> 
+                    <p style='color:white; font-size:1.3em;'>Current Password is Wrong! </p><a href='profile.php'></a>
+                    </div>";
+                }
+
+
+
+
+            }
+            ?>
 
 
         </main>
