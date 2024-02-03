@@ -29,7 +29,6 @@ if (isset($_POST['email'])) {
 
     if ($row) {
 
-        echo'kutta';
         $query = "UPDATE users SET password='$hashed_password' WHERE email='$email'";
 
         if ($conn->query($query) === TRUE) {

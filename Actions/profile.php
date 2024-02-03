@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Inventory</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="../CSS/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <a href="Bill.html">Bill</a>
+            <a href="Bill.php">Bill</a>
             <a href="Customer.php">Customers</a>
             <a href="Profile.php">Profile</a>
 
@@ -72,8 +72,9 @@
 
                                 <div class="input-box">
                                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                                    <input type="email" name="email" autocomplete="off" value="<?= $row['Email']; ?>">
-                                    <label>Email</label>
+                                    <input type="email" name="email" autocomplete="off" disabled="disabled"
+                                        value="<?= $row['Email']; ?>">
+                                    <label style="top:-4px;">Email</label>
                                 </div>
 
                                 <div class="input-box">
@@ -100,6 +101,39 @@
                 }
             }
             ?>
+
+            <?php
+            include 'db_connection.php';
+
+            if (isset($_POST['update'])) {
+
+                $email = $_SESSION['valid'];
+
+
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                
+                $conn->begin_Transaction();
+
+                try {
+                    mysqli_query($conn, "UPDATE users SET Name='$name',Phone='$phone',Address='$address' WHERE email='$email'");
+                    $conn->commit();
+                    echo "<div style='margin-top:20px;margin-left:140px;'> 
+                 <p style='color:white; font-size:1.3em;'>Updated Successfully !</p><a href='profile.php'></a>
+                 </div>";
+
+                } catch (Exception $e) {
+                    echo "<div class='center'> 
+            <p style='color:white; font-size:1.3em;'>Failed to Update !</p><a href='forgetPassword.php'><button class='GoBack-btn'>Try Again !</button>
+            </div>";
+                    $conn->rollback();
+                }
+
+            }
+            ?>
+
+
 
         </main>
 

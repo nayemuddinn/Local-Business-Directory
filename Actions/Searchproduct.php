@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <a href="Bill.html">Bill</a>
+            <a href="Bill.php">Bill</a>
             <a href="Customer.php">Customers</a>
             <a href="Profile.php">Profile</a>
 
@@ -83,7 +83,11 @@
 
                                     if (isset($_GET['search'])) {
                                         $cat = $_GET['search'];
-                                        $sql = "SELECT * FROM inventory where productCategory='$cat'";
+                                        if(empty($cat))
+                                        $sql = "SELECT * FROM inventory";
+                                        else{
+                                        $sql = "SELECT * FROM inventory where productCategory='$cat' or productName='$cat' or productID='$cat'";
+                                        }
 
                                     } else {
                                         $sql = "SELECT * FROM inventory";

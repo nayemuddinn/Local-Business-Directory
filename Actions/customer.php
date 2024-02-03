@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <a href="Bill.html">Bill</a>
+            <a href="Bill.php">Bill</a>
             <a href="Customer.php">Customers</a>
             <a href="Profile.php">Profile</a>
 

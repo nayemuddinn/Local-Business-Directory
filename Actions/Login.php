@@ -20,54 +20,59 @@ session_start();
   include 'db_connection.php';
 
 
-if (isset($_POST['login'])) {
+  if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-   
-     
-    
+
+
+
     $result = mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'") or die("Select Error");
     $row = mysqli_fetch_assoc($result);
-     
-    if (is_array($row) && !empty($row)){
 
-        // Verify hashed password
-        if (password_verify($password, $row['Password'])) {
-            $_SESSION['valid'] = $row['Email'];
-            $_SESSION['name'] = $row['Name'];
-    
-        }
-        echo "<div class='message'>
+    if (is_array($row) && !empty($row)) {
+
+      // Verify hashed password
+      if (password_verify($password, $row['Password'])) {
+        $_SESSION['valid'] = $row['Email'];
+        $_SESSION['name'] = $row['Name'];
+
+      }
+      echo "<div class='message'>
             <p>Wrong Password</p>
             <br> <br> <br>
             <div>";
-            echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
+      echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
             </div>";
 
-        if (isset($_SESSION['valid'])) {
-            header("Location: dashboard.php");
-            exit;
-          }
+      if (isset($_SESSION['valid'])) {
+        header("Location: dashboard.php");
+        exit;
+      }
 
     } else {
-        echo "<div class='message'>
+      echo "<div class='message'>
             <p>User Not Found</p>
             <br> <br> <br>
             <div>";
-        echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
+      echo "<div> <a href='login.php'><button class='GoBack-btn'>Try Again</button></a>
             </div>";
     }
 
-   
- 
 
 
-} else {
+
+
+  } else {
 
     ?>
 
     <header>
-      <h2 class="logo">Logo</h2>
+      <div style="display: block;">
+        <img src="../Assets/logo.png" />
+        <p>
+        <h4>Local Business Directory</h4>
+        </p>
+      </div>
     </header>
 
     <div class="login-wrapper">

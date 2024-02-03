@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <a href="Bill.php">Bill</a>
+      <a href="Bill.html">Bill</a>
       <a href="Customer.php">Customers</a>
       <a href="Profile.php">Profile</a>
 
@@ -41,8 +41,8 @@
     <a href="logout.php"> <button class="btnLogin-popup">Log out</button></a>
   </header>
 
-  <div class="homewrap">
-    <p>Welcome to local business directory website</p>
+  <div class="main-wrap">
+    <p>Here is Bill </p>
   </div>
 
 </body>
