@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="input-box">
-                                <input type="text" style="text-align:left; font-weight:600;" id="productprice" name="productprice"
+                                <input type="text" style="text-align:left; font-weight:600;"  name="productprice"
                                     value="<?= $row['price']; ?>">
                                 <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="productPrice">Product
                                     Price</label>
@@ -146,18 +146,14 @@
         }
 
 
+         if (isset($_POST['updateitem'])) {
+            $id = $_GET['search'];
+            $name = $_POST['productname'];
+            $price = $_POST['productprice'];
+            $quantity = $_POST['quantity'];
+            $unit = $_POST['unit'];
 
-
-
-        /* if (isset($_POST['updateitem'])) {
-            
-        
-            $name = $_GET['productname'];
-            $price = $_GET['productprice'];
-            $quantity = $_GET['quantity'];
-            $unit = $_GET['unit'];
-
-            $que = "UPDATE inventoryt set productName='" . $_POST['$name'] . "', price='" . $_POST['$price'] . "', available='" . $_POST['quantity'] . "' ,unit='" . $_POST['unit'] . "'";
+            $que = "UPDATE inventory set productName='$name',price='$price',Available='$quantity',unit='$unit' where productID='$id'";
 
             if ($conn->query($que) === TRUE) {
                 echo "<div class='center'> 
@@ -168,16 +164,8 @@
                 <p style='color:white; font-size:1.3em;'>Failed to Update !</p><a href='updateProduct.php'><button class='GoBack-btn'>Reload</button>
                 </div>";
             }
-        }  */
-
-
-
-
-
+        } 
         ?>
-
-
-
 
     </main>
 </body>
