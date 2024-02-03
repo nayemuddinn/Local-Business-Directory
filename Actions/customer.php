@@ -159,49 +159,51 @@
                                         <?php
                                         include 'db_connection.php';
 
-
                                         if (isset($_GET['search'])) {
                                             $name = $_GET['search'];
-                                            $sql = "SELECT * FROM customers where CustomerID='$name'";
-    
+                                            if (empty($name)) {
+                                                $sql = "SELECT * FROM customers";
+                                            } else {
+                                                $sql = "SELECT * FROM customers where CustomerID='$name' or CustomerName LIKE '%" . $name . "%'";
+                                            }
                                         } else {
                                             $sql = "SELECT * FROM customers";
                                         }
 
-                                    
-    
+
+
                                         $result = $conn->query($sql);
                                         $result2 = $conn->query($sql);
                                         $res = mysqli_fetch_assoc($result2);
 
-                                    
+
                                         if ($res == 0) {
                                             echo "<div>  <p style='margin-top:50px;color:white; font-weight:400;font-size:1.3em'>Not Result Found!</p> </div> <br>";
 
                                         } else {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            ?>
-                                            <td>
-                                                <?php echo $row['customerID']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['customerName']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['Email']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['Phone']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['Address']; ?>
-                                            </td>
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                <td>
+                                                    <?php echo $row['customerID']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['customerName']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['Email']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['Phone']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['Address']; ?>
+                                                </td>
 
 
-                                        </tr>
-                                        <?php
+                                            </tr>
+                                            <?php
+                                            }
                                         }
-                                    }
 
                                         ?>
 
