@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding: 0px 10px 5px px;
+    text-align: center;
+}
+
+
+.table-wrapper {
+  
+    overflow-y: scroll;
+    height: fit-content;
+    min-height: 30vh;
+    margin-top: 10px;
+    margin: 15px;
+    margin-left: 80px;
+    padding-bottom: 20px;
+    
+}
+
+
+table {
+     
+    width: 650px;
+    margin-top: 23px;
+    margin-left: 0px;
+    border-collapse: separate;
+    border-spacing: 0px;    
+    
+}
+
+
+
+table th{
+    position: sticky; 
+    top: 0px;
+      
+    background-color: #722525;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: 200;
+    font-size: 1em;
+    outline: 0.7px solid rgb(255, 255, 255);
+    border: 1.5px solid black;
+
+} 
+
+
+table th, table td {
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+table td {
+    text-align: center;
+    color: aliceblue;
+    font-size: 1.3em;
+    font-weight: 400;
+    border: 1px solid rgb(177, 177, 177);
+    padding-left: 20px;
+    
+}
+
+.tbtn {
+    width: 50px;
+    height: 20px;
+    background: rgb(4, 125, 125);
+    border: 5px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: whitesmoke;
+    font-weight: 300;
+  }
+  
+  .tbtn:hover {
+    background: #fff;
+    color: black;
+  }
+
+  .dbtn {
+    width: 45px;
+    height: 20px;
+    background: rgb(158, 7, 7);
+    border: 5px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: whitesmoke;
+    font-weight: 300;
+  }
+  
+  .dbtn:hover {
+    background: #fff;
+    color: black;
+  }
+

@@ -1,0 +1,44 @@
+.main_wrap {
+      margin-top: 30px;;
+      backdrop-filter: blur(20px);
+      width: 800px;
+      min-height: 500px;
+      border-radius: 10px;
+    }
+  
+
+    .input-box {
+      position: relative;
+      width: 50%;
+      height: 50px;
+      border-bottom: 2px solid #fafafa;
+      margin: 10px;
+  }
+  
+  .input-box label {
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      font-weight: 500;
+      pointer-events: none;
+      transition: .5s;
+  }
+  
+  .input-box input:focus~label,
+  .input-box input:valid~label {
+      top: -4px;
+  }
+  
+  .input-box input {
+      width: 50%;
+      height: 100%;
+      background: transparent;
+      color: whitesmoke;
+      border: none;
+      font-size: 1.2em;
+      outline: none;
+      padding: 0 35px 0 5px;
+  }
+  
