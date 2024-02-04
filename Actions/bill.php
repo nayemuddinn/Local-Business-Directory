@@ -101,8 +101,9 @@
                             ?>
                             <form action=" " method="POST">
                               <td>
-                                <input style="border-color:transparent;text-align:center;max-width: 30px;background:transparent;color:white;" type="text"
-                                  name="pid" autocomplete="off" value="  <?php echo $row['productID']; ?>"></input>
+                                <input
+                                  style="border-color:transparent;text-align:center;max-width: 30px;background:transparent;color:white;"
+                                  type="text" name="pid" autocomplete="off" value="  <?php echo $row['productID']; ?>"></input>
                               </td>
                               <td>
                                 <?php echo $row['productName']; ?>
@@ -146,72 +147,70 @@
           </div>
         </div>
       </div>
-    <?php
+      <?php
 
-    include 'db_connection.php';
+      include 'db_connection.php';
 
-    if (isset($_POST['add'])) {
+      if (isset($_POST['add'])) {
 
-      $id = $_POST['pid'];
-      $quantity = $_POST['quantity'];
+        $id = $_POST['pid'];
+        $quantity = $_POST['quantity'];
 
 
-      $sql = "SELECT * FROM cart where productID='$id'";
-      $res = $conn->query($sql);
-      $res2 = $conn->query($sql);
-      $res3 = $conn->query($sql);
-      $ro = mysqli_fetch_assoc($res);
-      $ro2 = mysqli_fetch_assoc($res2);
-      $ro3 = mysqli_fetch_assoc($res3);
+        $sql = "SELECT * FROM cart where productID='$id'";
+        $res = $conn->query($sql);
+        $res2 = $conn->query($sql);
+        $res3 = $conn->query($sql);
+        $ro = mysqli_fetch_assoc($res);
+        $ro2 = mysqli_fetch_assoc($res2);
+        $ro3 = mysqli_fetch_assoc($res3);
 
-      $sq = "SELECT * FROM inventory where productID='$id'";
-      $result = $conn->query($sq);
-      $row = mysqli_fetch_assoc($result);
+        $sq = "SELECT * FROM inventory where productID='$id'";
+        $result = $conn->query($sq);
+        $row = mysqli_fetch_assoc($result);
 
-      $name=$row['productName'];
-      $price = $row['price'];
-      $totalPrice = $quantity * $price;
-      $unit = $row['unit'];
-      $available = $row['available'];
+        $name = $row['productName'];
+        $price = $row['price'];
+        $totalPrice = $quantity * $price;
+        $unit = $row['unit'];
+        $available = $row['available'];
 
-      if($ro2)
-      {
-        $quantity=$quantity+$ro['Quantity'];
-      
-      }
+        if ($ro2) {
+          $quantity = $quantity + $ro['Quantity'];
 
-      if ($quantity > $available)
-        echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:300px;'>Not Enough Product Available!</p> </div> <br>";
-      else{
-
-        if($ro3)
-        {
-          $que = "delete from cart where productName='$name'";
-
-          $conn->query($que);
         }
 
-      $conn->begin_Transaction();
-      try {
-        $conn->query("INSERT INTO cart(productID,ProductName,productPrice,Quantity,unit,totalPrice) VALUES('$id','$name','$price','$quantity','$unit','$totalPrice')") or die("Erroe Occured");
-        $conn->commit();
-        echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:350px;'>Added to Cart!</p> </div> <br>";
+        if ($quantity > $available)
+          echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:300px;'>Not Enough Product Available!</p> </div> <br>";
+        else {
 
-      } catch (Exception $e) {
-        echo "<div class='message'>
+          if ($ro3) {
+            $que = "delete from cart where productName='$name'";
+
+            $conn->query($que);
+          }
+
+          $conn->begin_Transaction();
+          try {
+            $conn->query("INSERT INTO cart(productID,ProductName,productPrice,Quantity,unit,totalPrice) VALUES('$id','$name','$price','$quantity','$unit','$totalPrice')") or die("Erroe Occured");
+            $conn->commit();
+            echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:350px;'>Added to Cart!</p> </div> <br>";
+
+          } catch (Exception $e) {
+            echo "<div class='message'>
     <p>Failed to Add Product !</p>
 </div> <br>";
-        $conn->rollback();
+            $conn->rollback();
+          }
+        }
       }
-    }
-  }
 
-    ?>
+      ?>
 
-</main>
+    </main>
 
 
-
+ <div style="display:flex;">
     <main class="main_wrap">
       <h1 style="padding-top:15px;margin-top:50px; color:#ffffff;margin-left:45%; margin-bottom: 30px;">Cart</h1>
       <div class="container">
@@ -221,7 +220,7 @@
               <div>
                 <table>
                   <tr>
-                  <th>ID</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -242,28 +241,29 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                       <form action=" " method="POST">
-                              <td>
-                                <input style="text-align:center;border-color:transparent;max-width: 30px;background:transparent;color:white;" type="text"
-                                  name="did" autocomplete="off" value="  <?php echo $row['productID']; ?>"></input>
-                              </td>
-                      <td>
-                        <?php echo $row['productName']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['productPrice']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['Quantity']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['unit']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['totalPrice']; ?>
-                      </td>
-                      <td>
-                                <input type="submit" class="dbtn" name="delete" value="Delete"></input>
-                              </td>
+                        <td>
+                          <input
+                            style="text-align:center;border-color:transparent;max-width: 30px;background:transparent;color:white;"
+                            type="text" name="did" autocomplete="off" value="  <?php echo $row['productID']; ?>"></input>
+                        </td>
+                        <td>
+                          <?php echo $row['productName']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['productPrice']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['Quantity']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['unit']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['totalPrice']; ?>
+                        </td>
+                        <td>
+                          <input type="submit" class="dbtn" name="delete" value="Delete"></input>
+                        </td>
                     </tr>
                     </form>
                     <?php
@@ -277,10 +277,30 @@
         </div>
       </div>
 
+      <?php
+
+      include 'db_connection.php';
+
+      if (isset($_POST['delete'])) {
+
+        $did = $_POST['did'];
+        $que = "delete from cart where productID='$did'";
+        if ($conn->query($que) == TRUE) {
+          echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:45%;'>Deleted From Cart!</p> <a href='bill.php'><button style='margin-left:45%; margin-top:20px;' class='GoBack-btn'>Refresh</button></a></div> <br>";
+        } else {
+          echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:350px;'>Failed to Delete</p> </div> <br>";
+        }
+      }
+      ?>
+
+
     </main>
 
-
+    <div>
+    <input type="submit" class="dbtn" name="pay" value="Pay"></input>
+    </div>
   </div>
+    </div>
 
 
 </body>
