@@ -210,96 +210,195 @@
     </main>
 
 
- <div style="display:flex;">
-    <main class="main_wrap">
-      <h1 style="padding-top:15px;margin-top:50px; color:#ffffff;margin-left:45%; margin-bottom: 30px;">Cart</h1>
-      <div class="container">
-        <div>
-          <div class="table-wrapper">
-            <div>
+    <div style="display:flex;">
+      <main class="main_wrap">
+        <h1 style="padding-top:15px;margin-top:50px; color:#ffffff;margin-left:45%; margin-bottom: 30px;">Cart</h1>
+        <div class="container">
+          <div>
+            <div class="table-wrapper">
               <div>
-                <table>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Unit</th>
-                    <th>TotalPrice(BDT)</th>
-                    <th>Delete</th>
+                <div>
+                  <table>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Unit</th>
+                      <th>TotalPrice(BDT)</th>
+                      <th>Delete</th>
 
-                  </tr>
-                  <tr>
-
-                    <?php
-                    include 'db_connection.php';
-
-                    $sql = "SELECT * FROM cart";
-
-                    $result = $conn->query($sql);
-
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      ?>
-                      <form action=" " method="POST">
-                        <td>
-                          <input
-                            style="text-align:center;border-color:transparent;max-width: 30px;background:transparent;color:white;"
-                            type="text" name="did" autocomplete="off" value="  <?php echo $row['productID']; ?>"></input>
-                        </td>
-                        <td>
-                          <?php echo $row['productName']; ?>
-                        </td>
-                        <td>
-                          <?php echo $row['productPrice']; ?>
-                        </td>
-                        <td>
-                          <?php echo $row['Quantity']; ?>
-                        </td>
-                        <td>
-                          <?php echo $row['unit']; ?>
-                        </td>
-                        <td>
-                          <?php echo $row['totalPrice']; ?>
-                        </td>
-                        <td>
-                          <input type="submit" class="dbtn" name="delete" value="Delete"></input>
-                        </td>
                     </tr>
-                    </form>
-                    <?php
-                    }
-                    ?>
+                    <tr>
 
-                </table>
+                      <?php
+                      include 'db_connection.php';
+
+                      $sql = "SELECT * FROM cart";
+
+                      $result = $conn->query($sql);
+
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <form action=" " method="POST">
+                          <td>
+                            <input
+                              style="text-align:center;border-color:transparent;max-width: 30px;background:transparent;color:white;"
+                              type="text" name="did" autocomplete="off"
+                              value="  <?php echo $row['productID']; ?>"></input>
+                          </td>
+                          <td>
+                            <?php echo $row['productName']; ?>
+                          </td>
+                          <td>
+                            <?php echo $row['productPrice']; ?>
+                          </td>
+                          <td>
+                            <?php echo $row['Quantity']; ?>
+                          </td>
+                          <td>
+                            <?php echo $row['unit']; ?>
+                          </td>
+                          <td>
+                            <?php echo $row['totalPrice']; ?>
+                          </td>
+                          <td>
+                            <input type="submit" class="dbtn" name="delete" value="Delete"></input>
+                          </td>
+                      </tr>
+                      </form>
+                      <?php
+                      }
+                      ?>
+
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <?php
+
+        include 'db_connection.php';
+
+        if (isset($_POST['delete'])) {
+
+          $did = $_POST['did'];
+          $que = "delete from cart where productID='$did'";
+          if ($conn->query($que) == TRUE) {
+            echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:45%;'>Deleted From Cart!</p> <a href='bill.php'><button style='margin-left:45%; margin-top:20px;' class='GoBack-btn'>Refresh</button></a></div> <br>";
+          } else {
+            echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:350px;'>Failed to Delete</p> </div> <br>";
+          }
+        }
+        ?>
+      </main>
+
+
+      <div>
+        <div style="margin-left:50px;" class="login-wrapper">
+
+          <div style="margin-left:20px;" class="form-box login">
+            <h2>Order</h2>
+            <form action="" method="post">
+
+              <div class="input-box">
+                <input type="text" name="customerid" autocomplete="off" required>
+                <label>Customer Name/ID</label>
+              </div>
+
+              <div class="input-box">
+
+                <?php
+
+                include 'db_connection.php';
+
+                $query = "select SUM(totalPrice) from cart";
+                $query_run = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($query_run) > 0) {
+                  foreach ($query_run as $row) {
+                    ?>
+                    <input type="text" name="totalBill" autocomplete="off" required value="<?= $row['SUM(totalPrice)']; ?>">
+                    <label style="top:-3px;">Total Bill</label>
+                  </div>
+
+                  <?php
+                  }
+                }
+                ?>
+
+              <div class="input-box">
+                <input width="200px;" type="text" name="feedback" autocomplete="off" required>
+                <label>Feedback</label>
+              </div>
+
+
+              <div><br></div>
+              <input type="submit" class="pbtn" name="pay" value="Pay"></input>
+
+            </form>
+          </div>
+        </div>
+
+
+        <?php
+
+        include 'db_connection.php';
+
+        if (isset($_POST['pay'])) {
+
+          $cid = $_POST['customerid'];
+          $feedback = $_POST['feedback'];
+
+          $que = "select * from customers where customerID='$cid'";
+          $verify_query = mysqli_query($conn, $que);
+          if (mysqli_num_rows($verify_query) == 0) {
+            echo "<div>  <p style='margin-top:10px;color:white; font-weight:600;font-size:1.4em; margin-left:160px;'>No Customer Found ! </p> <a href='bill.php'><button style='margin-left:40%; margin-top:20px;' class='refresh-btn'>Refresh</button></a></div> <br>";
+          } else {
+
+
+            $date = date("Y/m/d");
+
+            $cartorder = "select * from cart ";
+            $query_run = mysqli_query($conn, $cartorder);
+
+            if (mysqli_num_rows($query_run) > 0) {
+              $order_id = time() . mt_rand() . $cid . date("Y/m/d");
+              foreach ($query_run as $row) {
+                $proID = $row['productID'];
+                $proName = $row['productName'];
+                $proQ = $row['Quantity'];
+                $tprice = $_POST['totalBill'];
+                $sql = "INSERT INTO orders(ordersID,date,customerID,productID,productName,Quantity,totalPrice) VALUES('$order_id','$date','$cid','$proID','$proName','$proQ','$tprice')";
+                $conn->query($sql);
+
+                $check = "select * from inventory where productID='$proID'";
+              
+                $result = $conn->query($check);
+                $row = mysqli_fetch_assoc($result);
+                  $avaiQ = $row['available'];
+                  
+                
+                $avaiQ = $avaiQ - $proQ;
+                $sqlI = "UPDATE inventory set available='$avaiQ' where productID='$proID'";
+            
+                $conn->query($sqlI);
+
+              }
+              $sql = "delete from cart where productID is not null";
+              $conn->query($sql);
+              echo "<div>  <p style='margin-top:10px;color:white; font-weight:600;font-size:1.4em; margin-left:180px;'>Bill Payed! </p> <a href='bill.php'><button style='margin-left:40%; margin-top:20px;' class='refresh-btn'>Refresh</button></a></div> <br>";
+
+            }
+          }
+        }
+        ?>
+
       </div>
 
-      <?php
 
-      include 'db_connection.php';
-
-      if (isset($_POST['delete'])) {
-
-        $did = $_POST['did'];
-        $que = "delete from cart where productID='$did'";
-        if ($conn->query($que) == TRUE) {
-          echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:45%;'>Deleted From Cart!</p> <a href='bill.php'><button style='margin-left:45%; margin-top:20px;' class='GoBack-btn'>Refresh</button></a></div> <br>";
-        } else {
-          echo "<div>  <p style='margin-top:50px;color:white; font-weight:600;font-size:1.4em; margin-left:350px;'>Failed to Delete</p> </div> <br>";
-        }
-      }
-      ?>
-
-
-    </main>
-
-    <div>
-    <input type="submit" class="dbtn" name="pay" value="Pay"></input>
-    </div>
-  </div>
     </div>
 
 
