@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['valid'])) {
+    header("Location: login.php");
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +97,7 @@
 
 
           <div class="input-box">
-            <input type="text" style="margin-left: 30px;" name="productname" autocomplete="off" required>
+            <input type="text" style="margin-left: 10px;" name="productname" autocomplete="off" required>
             <label style="color:#ffffff; font-size:1.2em; font-weight: 700;" for="name">Product Name</label>
           </div>
 

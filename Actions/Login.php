@@ -31,7 +31,6 @@ session_start();
 
     if (is_array($row) && !empty($row)) {
 
-      // Verify hashed password
       if (password_verify($password, $row['Password'])) {
         $_SESSION['valid'] = $row['Email'];
         $_SESSION['name'] = $row['Name'];
