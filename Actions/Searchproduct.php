@@ -93,7 +93,7 @@ if (!isset($_SESSION['valid'])) {
                                         if(empty($cat))
                                         $sql = "SELECT * FROM inventory";
                                         else{
-                                        $sql = "SELECT * FROM inventory where productCategory='$cat' or productName='$cat' or productID='$cat'";
+                                        $sql = "SELECT * FROM inventory where productCategory LIKE '%" . $cat . "%' or productName LIKE '%" . $cat . "%' or productID='$cat'";
                                         }
 
                                     } else {
